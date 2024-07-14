@@ -8,15 +8,14 @@ const PRODUCT_ID: u16 = 2;   // DeepCool AK620 Product ID
 fn get_data(value: u8) -> Vec<u8> {
     let mut base_data = vec![0; 64];
     base_data[0] = 16;
-    base_data[1] = 19; 
+    base_data[1] = 19;
 
-    let digits = value.to_string().chars().map(|c| c.to_digit(10).unwrap() as u8).collect::<Vec<u8>>();
+    base_data[2] = value / 10;
+    base_data[3] = 0; // Tens digit
+    base_data[4] = value / 10; // Tens digit
+    base_data[5] = value % 10; // Ones digit
 
-    for (i, &digit) in digits.iter().enumerate() {
-        base_data[3 + i] = digit;
-    }
-
-    return base_data;  // Explicitly return the base_data vector
+    return base_data;
 }
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
@@ -32,9 +31,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             let temp = component.temperature().round() as u8;
 
             // Check for valid temperature range before displaying
-            if temp > 0 && temp < 100 {  // Reasonable range for CPU temps
-                // println!("CPU Temp: {}°C", temp);
-                device.write(&get_data(temp))?; 
+            if temp > 0 && temp < 100 {
+                device.write(&get_data(temp))?;
             } else {
                 println!("Invalid CPU temperature: {}", temp); // Handle invalid readings
             }

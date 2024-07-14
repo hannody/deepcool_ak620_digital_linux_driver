@@ -1,4 +1,6 @@
 # Save in : /etc/systemd/system/
+# after any update on the code, and after running <cargo build --release> we need to run sudo systemctl restart deepcool-ak620.service
+# so that the new changes will be picked up by systemd.
 [Unit]
 Description=DeepCool AK620 Temperature Display Written by Mohanad Abu-Nayla.
 After=network.target
@@ -8,9 +10,9 @@ StartLimitIntervalSec=0
 Type=simple
 Restart=always
 RestartSec=1
-User=mohanad
-WorkingDirectory=/home/mohanad/Documents/rust_stuff/deepcool_ak620_rust/
-ExecStart=/home/mohanad/.cargo/bin/cargo run --manifest-path /home/mohanad/Docu>
+User=<your_username>
+WorkingDirectory=/home/<your_username>/Documents/rust_stuff/deepcool_ak620_rust/
+ExecStart=/home/<your_username>/.cargo/bin/cargo run --manifest-path /home/<your_username>/Docu>
 StandardOutput=append:/var/log/deepcool_ak620.log
 StandardError=append:/var/log/deepcool_ak620.log
 Environment="RUSTUP_TOOLCHAIN=stable-x86_64-unknown-linux-gnu"
