@@ -1,5 +1,5 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-```markdown
+
 # DeepCool AK620 Digital Temperature Display for Ubuntu (Rust Implementation)
 
 This project provides a Rust-based solution to display your CPU temperature on the DeepCool AK620 Digital Air Cooler when running Ubuntu.
@@ -67,4 +67,4 @@ This project has been successfully tested on the following system:
 
 - CPU: Ryzen 9 7800X3D (AM5)
 - Operating System: Ubuntu 24.04 LTS
-```
+
