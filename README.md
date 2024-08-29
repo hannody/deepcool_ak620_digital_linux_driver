@@ -1,3 +1,4 @@
+** A better implementaion can be found here: https://github.com/hannody/deepcool-ak620-linux/tree/master
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 # DeepCool AK620 Digital Temperature Display for Ubuntu (Rust Implementation)
